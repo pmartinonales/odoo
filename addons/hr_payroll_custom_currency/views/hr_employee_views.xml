@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_form_inherit_custom_currency" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.custom.currency</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- Replace the hidden currency_id with a visible, editable one in the Payroll tab -->
+            <xpath expr="//page[@name='payroll_information']/field[@name='currency_id']" position="replace">
+                <field name="currency_id" string="Contract Currency"
+                       groups="hr.group_hr_manager"
+                       options="{'no_create': True}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
