@@ -7,8 +7,8 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     currency_id = fields.Many2one(
-        'res.currency',
-        related='version_id.currency_id',
         readonly=False,
+        related='version_id.currency_id',
+        inherited=True,
         groups="hr.group_hr_user",
     )
