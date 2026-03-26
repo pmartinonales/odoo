@@ -1,23 +1,21 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class HrVersion(models.Model):
     _inherit = 'hr.version'
 
-    currency_id = fields.Many2one(
+    contract_currency_id = fields.Many2one(
         'res.currency',
-        string="Currency",
-        compute='_compute_currency_id',
-        store=True,
-        readonly=False,
-        precompute=True,
+        string="Contract Currency",
+        default=lambda self: self.env.company.currency_id,
+        required=True,
         tracking=True,
     )
 
-    @api.depends('company_id')
-    def _compute_currency_id(self):
-        for version in self:
-            if not version.currency_id:
-                version.currency_id = version.company_id.currency_id
+    # Override currency_id to follow contract_currency_id
+    # so all Monetary fields (wage, contract_wage) use the contract currency
+    currency_id = fields.Many2one(
+        related='contract_currency_id',
+    )

@@ -6,12 +6,9 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <!-- Remove the original hidden currency_id -->
-            <xpath expr="//page[@name='payroll_information']/field[@name='currency_id']" position="replace">
-            </xpath>
-            <!-- Insert editable currency selector inside Contract Overview, before Contract dates -->
+            <!-- Insert editable contract currency selector inside Contract Overview -->
             <xpath expr="//page[@name='payroll_information']//group[@name='contract']//label[@for='contract_date_start']" position="before">
-                <field name="currency_id" string="Contract Currency"
+                <field name="contract_currency_id" string="Contract Currency"
                        options="{'no_create': True, 'no_open': True, 'no_create_edit': True}"/>
             </xpath>
         </field>
