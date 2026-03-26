@@ -9,7 +9,8 @@
             <!-- Insert editable currency field inside Contract Overview, before Contract dates -->
             <xpath expr="//page[@name='payroll_information']//group[@name='contract']//label[@for='contract_date_start']" position="before">
                 <field name="currency_id" string="Contract Currency"
-                       options="{'no_create': True}"/>
+                       widget="selection"
+                       options="{'no_create': True, 'no_open': True}"/>
             </xpath>
         </field>
     </record>
