@@ -14,7 +14,6 @@ class HrVersion(models.Model):
         readonly=False,
         precompute=True,
         tracking=True,
-        groups="hr.group_hr_manager",
     )
 
     @api.depends('company_id')

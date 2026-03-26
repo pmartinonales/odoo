@@ -10,5 +10,4 @@ class HrEmployee(models.Model):
         readonly=False,
         related='version_id.currency_id',
         inherited=True,
-        groups="hr.group_hr_user",
     )
