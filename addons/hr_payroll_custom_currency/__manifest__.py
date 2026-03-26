@@ -2,29 +2,21 @@
 
 {
     'name': 'HR Payroll - Custom Currency',
-    'version': '19.0.2.0.0',
+    'version': '19.0.3.0.0',
     'category': 'Human Resources/Payroll',
-    'summary': 'Allow defining a custom currency on employee contracts for payroll',
+    'summary': 'Allow defining a custom currency on employee contracts',
     'description': """
 HR Payroll - Custom Contract Currency
 ======================================
 
-This module allows defining a custom currency per employee contract,
-instead of always using the company's default currency.
-
-Features:
-- Editable currency field on the employee's Payroll tab
-- Defaults to the company currency but can be overridden
-- Payslip amounts computed in the contract currency
-- Worked days amounts use the contract currency
-- Accounting journal entries created in the contract currency
-- Multi-currency support leverages Odoo's native exchange rate handling
+Adds an editable Contract Currency field to the employee's Payroll tab.
+Installable via zip import (data-only module).
     """,
     'depends': ['hr_payroll'],
     'data': [
+        'data/ir_model_fields.xml',
         'views/hr_employee_views.xml',
     ],
-    'post_init_hook': '_post_init_hook',
     'installable': True,
     'auto_install': False,
     'license': 'LGPL-3',
